@@ -196,6 +196,8 @@ class CountDown extends React.Component {
     const {days, hours, minutes, seconds} = this.getTimeLeft();
     const newTime = sprintf('%02d:%02d:%02d:%02d', days, hours, minutes, seconds).split(':');
     const Component = this.props.onPress ? TouchableOpacity : View;
+    // show full minute(s)
+    newTime[2] = parseInt(hours) > 0 ? (parseInt(newTime[2]) + (parseInt(hours)*60)) : parseInt(newTime[2]);
 
     return (
       <Component
